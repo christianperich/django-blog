@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <title>Mi Blog</title>
+</head>
+<nav class='navbar text-light bg-dark d-flex flex-row justify-content-between align-items-center mb-5'>
+  <h1 class='col-2'><a href="{% url 'home' %}" class="text-white">Mi Blog</a></h1>
+  <div class="d-flex align-items-center col-6 justify-content-center">
+    <a class='text-white m-3' href="{% url 'home' %}">Inicio</a>
+    <a class='text-white m-3' href="{% url 'create_post' %}">Crear entrada</a>
+  </div>
+  <div class="col-2 align-items-center">
+    {% if user.is_authenticated %}
+      <p>Hola, {{user.username}} / 
+        <a class='text-white' href="{% url 'logout' %}">Salir</a>
+      </p>
+    {% else %}
+      <a class='text-white m-3' href="{% url 'login' %}">Ingresar</a>
+      <a class='text-white m-3' href="{% url 'signup' %}">Registrarse</a>
+    {% endif %}
+  </div>  
+</nav>
+<body class="text-center mb-5">
+  {% block content %}{% endblock content %}
+</body>
+<footer class="fixed-bottom text-light bg-dark">
+  <p>Página creada por Chris Perich - 2024</p>
+</footer>
+</html>

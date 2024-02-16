@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1> {{post.title}} </h1>
+<img class='w-50 mb-5' src='{{post.image_url}}'></img>
+<div class='container text-left mb-5'>  
+  <p> Redactado por: {{post.author}} el {{post.date_posted}} </p>
+  <article> {{post.content | safe }} </article>
+</div>
+
+
+<h2>Comentarios</h2>
+{% if comments %}
+  <div class='mb-5'>
+    {% for comment in comments %}
+      <div class='container card text-left'>  
+        <p><strong>{{comment.author}}: </strong> {{comment.body}} </p>
+      </div>
+    {% endfor %}
+  </div>
+
+{% else %}
+
+  <p>Todavía no hay comentarios</p>
+
+{% endif %}
+
+<h2>Deja un comentario</h2>
+<p>¿Te gustó este artículo? Déjanos un comentario</p>
+<div class='container'>
+  <form method="post">
+    {% csrf_token %}
+    {{form.body}} <br>
+    <input type="submit" value="Enviar">
+  </form>
+</div>
+
+{% endblock content %}
