@@ -14,8 +14,9 @@
 {% if comments %}
   <div class='mb-5'>
     {% for comment in comments %}
-      <div class='container card text-left'>  
-        <p><strong>{{comment.author}}: </strong> {{comment.body}} </p>
+      <div class='container card text-left mb-1'>  
+        <h5><strong>{{comment.author}}:</strong></h5>
+        <p> {{comment.body}} </p>
       </div>
     {% endfor %}
   </div>
