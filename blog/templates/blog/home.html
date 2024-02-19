@@ -6,7 +6,7 @@
   <div class="row justify-content-center">
     {% for blog in blogs %}
       <div class="card pb-3 m-2 col-3">  
-        <img class="mx-auto w-100 mb-3 object-fit-cover" src='{{blog.image_url}}'>
+        <img class="mx-auto mb-3 object-fit-cover" alt={{blog.title}} style="height: 200px" src='{{blog.image_url.url}}' >
         <h5> {{blog.title}} </h5>
         <p> {{blog.content | truncatechars:100}}</p> 
         <a href="{% url 'post_detail' blog.id %}">ver más</a> 

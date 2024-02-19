@@ -9,10 +9,13 @@ class Entry(models.Model):
     content = models.TextField(default='')
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    image_url = models.URLField(default='')
+    image_url = models.ImageField(upload_to='images/')
 
     def __str__(self):
         return f'{self.title} - {self.author}'
+    
+    class Meta:
+        verbose_name_plural = "Entries"
     
 
 class Comment(models.Model):
